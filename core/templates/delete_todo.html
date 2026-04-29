@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Delete Todo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="w-1/2 mx-auto mt-20 text-center">
+      <div class="bg-red-100 p-8 rounded-lg">
+        <h1 class="text-3xl font-bold text-red-600 mb-4">Delete Todo</h1>
+        <p class="text-lg mb-4">Are you sure you want to delete "{{todo.title}}"?</p>
+        <p class="text-gray-600 mb-6">This action cannot be undone.</p>
+        
+        <form method="POST" class="inline">
+          {% csrf_token %}
+          <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">Yes, Delete</button>
+          <a href="/todos/" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 ml-2">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

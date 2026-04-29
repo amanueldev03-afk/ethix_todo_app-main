@@ -5,19 +5,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div
-      class="bg-sky-200 w-1/2 mx-auto rounded-2xl mb-20 mt-10 pt-4 pl-4 pb-4"
-    >
+    <div class="bg-sky-200 w-1/2 mx-auto rounded-2xl mb-20 mt-10 pt-4 pl-4 pb-4">
       <h1 class="text-3xl font-bold text-center">{{todo.title}}</h1>
-      <p class="text-lg">{{todo.description}}</p>
-      <div>
+      <p class="text-lg mt-4">{{todo.description|default:"No description"}}</p>
+      <div class="mt-4">
+        <p class="text-sm text-gray-600">Priority: {{todo.get_priority_display}}</p>
+        <p class="text-sm text-gray-600">Status: {% if todo.is_completed %}Completed{% else %}Pending{% endif %}</p>
         <p class="text-sm text-gray-500">Created at: {{todo.created_at}}</p>
-        <!-- Remove updated_at since it doesn't exist in model -->
+        <p class="text-sm text-gray-500">Updated at: {{todo.updated_at}}</p>
       </div>
-      <h3 class="text-xs text-gray-400">Author: {{todo.user.username}}</h3>
+      <h3 class="text-xs text-gray-400 mt-2">Author: {{todo.user.username}}</h3>
     </div>
-    <footer class="bg-red-500 mt-10">
-      <p class="text-xs text-gray-400 text-center py-4">© 2024 Todo App</p>
-    </footer>
+    <div class="text-center">
+      <a href="/todos/" class="bg-blue-500 text-white px-4 py-2 rounded">Back to Todos</a>
+    </div>
   </body>
 </html>
